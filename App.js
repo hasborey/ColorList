@@ -6,11 +6,24 @@ import {
 } from 'react-native'
 
 export default class App extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      backgroundColor: 'lightskyblue',
+    }
+  }
+  setBgColor(backgroundColor) {
+    this.setState({backgroundColor})
+  }
+
   render () {
+    const { backgroundColor } = this.state
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.button}>Green</Text>
-        <Text style={styles.button}>Red</Text>
+      <View style={[styles.container, { backgroundColor }]}>
+        <Text onPress={() => this.setBgColor('lightgreen')} style={styles.button}>Green</Text>
+        <Text onPress={() => this.setBgColor('lightcoral')} style={styles.button}>Red</Text>
       </View>
     )
   }
@@ -20,9 +33,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: 'lightskyblue',
   },
   button: {
     flex: 1,
