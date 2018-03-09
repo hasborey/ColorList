@@ -3,6 +3,7 @@ import {
   Text,
   View,
   StyleSheet,
+  TouchableHighlight,
 } from 'react-native'
 
 export default class App extends Component {
@@ -22,8 +23,18 @@ export default class App extends Component {
 
     return (
       <View style={[styles.container, { backgroundColor }]}>
-        <Text onPress={() => this.setBgColor('lightgreen')} style={styles.button}>Green</Text>
-        <Text onPress={() => this.setBgColor('lightcoral')} style={styles.button}>Red</Text>
+        <TouchableHighlight
+          onPress={() => this.setBgColor('lightgreen')}
+          style={styles.button}
+        >
+          <Text>Green</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.setBgColor('lightcoral')}
+          style={styles.button}
+        >
+          <Text>Red</Text>
+        </TouchableHighlight>
       </View>
     )
   }
@@ -32,19 +43,17 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
   },
   button: {
-    flex: 1,
-    fontSize: 20,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 10,
     padding: 10,
     margin: 10,
+    alignSelf: 'stretch',
     textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0)',
+    backgroundColor: 'rgba(255, 255, 255,.5)',
   }
 })
