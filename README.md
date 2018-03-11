@@ -1,6 +1,7 @@
 # ColorList
 React Native project that show list of color and be able to set those color as background
 
+![android-color-list](assets/Screenshot/android-color-list.png "ColorList app on Android")
 
 # Installation
 

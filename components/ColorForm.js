@@ -8,12 +8,14 @@ import {
 } from 'react-native'
 
 export default class ColorForm extends Component {
-  constructor (props) {
-    super(props)
+  constructor() {
+    super()
 
-    this.state = ({
-      txtColor: ''
-    })
+    this.state = {
+      txtColor: '',
+    }
+
+    this.submit = this.submit.bind(this)
   }
 
   submit () {
@@ -47,24 +49,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    margin: 10,
+    backgroundColor: 'lightgray',
   },
   textInput: {
     flex: 1,
-    fontSize: 18,
+    fontSize: 20,
+    margin: 10,
+    marginRight: 0,
     padding: 10,
-    marginVertical: 10,
     borderWidth: 1,
     borderRadius: 5,
     backgroundColor: 'snow',
   },
   button: {
-    padding: 10,
-    margin: 10,
-    marginRight: 0,
-    fontSize: 18,
+    fontSize: 20,
     borderWidth: 1,
-    borderRadius: 8,
-  },
+    borderRadius: 5,
+    margin: 10,
+    padding: 10,
+  }
 })

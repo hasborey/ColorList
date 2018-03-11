@@ -58,10 +58,7 @@ export default class App extends Component {
           />
         )}
         renderHeader={() => (
-          <ColorForm
-            style={styles.colorForm}
-            onNewColor={this.newColor}
-          />
+          <ColorForm onNewColor={this.newColor} />
         )}
       >
       </ListView>
@@ -73,13 +70,4 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    fontSize: 35,
-    padding: 10,
-    backgroundColor: 'lightgray',
-    textAlign: 'center',
-  },
-  colorForm: {
-    flex: 1,
-  }
 })
