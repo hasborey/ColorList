@@ -4,6 +4,7 @@ import {
   View,
   ListView,
   StyleSheet,
+  AsyncStorage,
 } from 'react-native'
 import ColorButton from './components/ColorButton'
 import ColorForm from './components/ColorForm'
@@ -16,11 +17,7 @@ export default class App extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     })
 
-    const availableColors = [
-      'green',
-      'blue',
-      'pink',
-    ]
+    const availableColors = []
 
     this.state = {
       backgroundColor: 'lightskyblue',
@@ -31,8 +28,26 @@ export default class App extends Component {
     this.newColor = this.newColor.bind(this)
   }
 
+  componentDidMount () {
+    AsyncStorage.getItem('@ColorListStore:Colors', (err, data) => {
+      if (err) {
+        console.error('Error loading colors', err)
+      } else if (data) {
+        const availableColors = JSON.parse(data)
+        this.setState({
+          availableColors,
+          dataSource: this.ds.cloneWithRows(availableColors)
+        })
+      }
+    })
+  }
+
   changeColor (backgroundColor) {
     this.setState({backgroundColor})
+  }
+
+  saveColors (colors) {
+    AsyncStorage.setItem('@ColorListStore:Colors', JSON.stringify(colors))
   }
 
   newColor (color) {
@@ -42,6 +57,8 @@ export default class App extends Component {
     ]
     this.setState({availableColors})
     this.setState({dataSource: this.ds.cloneWithRows(availableColors)})
+    this.saveColors(availableColors)
+
   }
 
   render () {
