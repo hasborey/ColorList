@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import { Alert } from 'react-native'
+import { StackNavigator } from 'react-navigation'
 import ColorList from './components/ColorList'
+import ColorInfo from './components/ColorInfo'
 
-export default class App extends Component {
-  render () {
-    return (
-        <ColorList onColorSelected={color => Alert.alert(color)} />
-    )
-  }
-}
+const App = StackNavigator({
+  Home: { screen: ColorList },
+  Detail: { screen: ColorInfo }
+})
+
+export default App
