@@ -19,13 +19,17 @@ export default class ColorForm extends Component {
   }
 
   submit () {
+    if(!this.state.txtColor) {
+      return false
+    }
     this.props.onNewColor(this.state.txtColor.toLowerCase())
     this.setState({txtColor: ''})
   }
 
   render () {
-    const { onTab } = this.props
+    const { navigate } = this.props.navigation
     const { txtColor } = this.state
+    const uri = 'https://www.w3schools.com/colors/colors_names.asp'
 
     return (
       <View style={styles.container}>
@@ -35,7 +39,8 @@ export default class ColorForm extends Component {
           onChangeText={(txtColor) => this.setState({txtColor})}
           value={this.state.txtColor}
         />
-        <Text style={styles.button} onPress={() => this.submit()}>Add</Text>
+        <Text onPress={() => this.submit()} style={[styles.button, { marginRight: 0 }]}>Add</Text>
+        <Text onPress={() => navigate('Web', {uri})} style={styles.button}>Info</Text>
       </View>
     )
   }
@@ -62,6 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'snow',
   },
   button: {
+    backgroundColor: 'lightblue',
     fontSize: 20,
     borderWidth: 1,
     borderRadius: 5,

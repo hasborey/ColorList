@@ -1,7 +1,9 @@
 # ColorList
 React Native project that show list of color and be able to set those color as background
 
-![android-color-list](assets/Screenshot/android-color-list.png "ColorList app on Android")
+![android-color-list](assets/Screenshot/home-ios.png "Home - iOS")
+![android-color-list](assets/Screenshot/detail-ios.png "Detail - iOS")
+![android-color-list](assets/Screenshot/webview-ios.png "WebView - iOS")
 
 # Installation
 
@@ -17,7 +19,7 @@ React Native project that show list of color and be able to set those color as b
     cd ColorList
     ```
     
-3. Run npm to node package dependencies
+3. Run npm to install node package dependencies
 
     ```bash
     npm install
